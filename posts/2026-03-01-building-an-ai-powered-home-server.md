@@ -10,15 +10,15 @@ The idea was simple: a small, silent box that runs 24/7, hosting an AI assistant
 
 ## The Hardware
 
-I went with an SER8 mini PC — small footprint, low power draw, enough grunt to run Docker containers and serve as a development box. It sits on my desk, barely audible, always on.
+I went with a [Beelink SER8 (AMD Ryzen 7 8745HS, 32GB/1TB)](https://www.bee-link.com/products/beelink-ser8-8745hs) — small footprint, low power draw, enough grunt to run Docker containers and serve as a development box. It sits on my desk, barely audible, always on.
 
 ## The Stack
 
-- **Arch Linux** with [Omarchy](https://github.com/omarchy) — a minimal, opinionated desktop setup
-- **Docker** for isolation — the AI assistant runs in its own container with a mounted workspace
-- **Claude Code** as the AI backbone — persistent sessions, tool access, full autonomy within the container
-- **Telegram Bot** for notifications — the assistant pings me when tasks are complete
-- **GitHub Actions** for deployment — blog posts get committed locally, pushed by host-side automation
+- **[Arch Linux](https://archlinux.org/)** with **[Omarchy](https://omarchy.org/)** — a minimal, opinionated desktop setup
+- **[Docker](https://www.docker.com/)** for isolation — the AI assistant runs in its own container with a mounted workspace
+- **[Claude Code](https://claude.com/product/claude-code)** as the AI backbone — persistent sessions, tool access, full autonomy within the container
+- **[Telegram Bot](https://core.telegram.org/bots)** for notifications — the assistant pings me when tasks are complete
+- **[GitHub Actions](https://github.com/features/actions)** for deployment — blog posts get committed locally, pushed by host-side automation
 
 ## Why Not the Cloud?
 
@@ -26,15 +26,22 @@ Latency, control, and cost. A local box means instant file access, no egress fee
 
 ## What It Does
 
-The server runs continuously. When I drop a task file into the workspace, the assistant picks it up, processes it, and notifies me. It can:
+The server runs continuously and supports multiple workflows:
 
-- Write and publish blog posts from doc diffs
-- Research topics and compile findings
-- Build tools and scripts autonomously
-- Manage its own memory across sessions
+- **Blog automation** — doc diffs trigger draft posts, committed and ready for review
+- **Research and tooling** — the assistant builds scripts, investigates topics, and compiles findings autonomously
+- **Persistent memory** — context carries across sessions, so it learns the codebase and my preferences over time
 
-The constraint is the interface: everything flows through files, environment variables, and Telegram messages. No GUI, no voice, no real-time chat. Just async task processing.
+## How I Interact With It
+
+This isn't a single-interface system. I reach the assistant in whatever way fits the moment:
+
+- **[Claude Code](https://claude.com/product/claude-code) Remote Server** — I connect from my phone or any device, driving the agent on the server remotely
+- **Voice** — using [Voxtype](https://voxtype.io/) and [Whispr Flow](https://wisprflow.ai/), I can speak commands and have them transcribed into the session
+- **File drops and Telegram** — async task files and bot notifications for hands-off workflows
+
+The mix keeps evolving. Some days it's all voice from my phone while I'm away from the desk. Other times it's a deep coding session over remote. The server just stays ready.
 
 ## What's Next
 
-More automation hooks, better task queuing, and expanding the assistant's toolkit. The goal is a system that handles the boring stuff so I can focus on the interesting stuff.
+More workflows, more integrations, and expanding what the assistant can handle end-to-end. The goal is a system that adapts to how I work — not the other way around.
